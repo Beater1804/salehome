@@ -1,0 +1,19 @@
+{
+    "workbench.colorTheme": "Default Dark+",
+    "liveServer.settings.donotShowInfoMsg": true,
+    "tabnine.experimentalAutoImports": true,
+    "emmet.includeLanguages": {
+        "django-html": "html"
+    },
+    "python.linting.pylintArgs": [
+        "--load-plugins=pylint_django",
+        "--errors-only"
+    ],
+    "[python]": {
+
+        "editor.wordBasedSuggestions": false
+    },
+    "python.linting.pylintPath": "pylint_django",
+    
+    
+}
