@@ -1,7 +1,7 @@
 {% extends 'base.html'%}
-
+{% load i18n %}
+{% load socialaccount %}
 {% block title %} | Account Login {% endblock %}
-
 {% block content %}
   <section id="login" class="bg-light py-5">
     <div class="container">
@@ -30,10 +30,26 @@
 
                 <input type="submit" value="Login" class="btn btn-secondary btn-block">
               </form>
+
+              <div class="login-or">{% trans 'or' %}</div>
+              
+              <div class="socialaccount_ballot">
+                <!-- GitHub button starts here -->
+                  <a  href="{% provider_login_url "github" %}" id="github-a" class="github-btn btn btn-secondary">
+                    <i class="bi bi-github"></i>
+                    <span>Login with GitHub</span>
+                  </a>
+                <!-- GitHub button ends here -->
+                  <a  href="{% provider_login_url "google" %}" id="google-btn" class="google-btn btn btn-secondary">
+                    <i class="bi bi-google"></i>
+                    <span>Login with Google</span>
+                  </a>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </section>
+  
   {% endblock %}
