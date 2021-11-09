@@ -1,7 +1,10 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from listings.choices import price_choices, bedroom_choices, state_choices
 
+from django.contrib import messages
+
+from .forms import NewListingForm
 from .models import Listing
 
 def index(request):
