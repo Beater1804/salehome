@@ -41,6 +41,17 @@
 
                 <ul class="navbar-nav ml-auto">
                 {% if user.is_authenticated %}
+                    {% comment %} Tạo button đăng thông tin nhà {% endcomment %}
+                    <li 
+                        {%if 'new_listing_form' in request.path %}
+                            class="nav-item active mr-3"
+                        {%else %}
+                            class="nav-item mr-3"
+                        {%endif %}
+                    >
+                        <a class="nav-link" href="{% url 'new_listing_form' %}">
+                        <i class="fas fa-user-plus"></i> Post Listing</a>
+                    </li>
                     <li 
                         {%if 'dashboard' in request.path %}
                             class="nav-item active mr-3"
@@ -62,6 +73,17 @@
                         </form>
                     </li>
                 {% else %}
+                    {% comment %} Tạo button đăng thông tin nhà {% endcomment %}
+                    <li 
+                        {%if 'new_listing_form' in request.path %}
+                            class="nav-item active mr-3"
+                        {%else %}
+                            class="nav-item mr-3"
+                        {%endif %}
+                    >
+                        <a class="nav-link" href="{% url 'new_listing_form' %}">
+                        <i class="fas fa-user-alt-slash"></i> Post Listing</a>
+                    </li>
                     <li 
                         {%if 'register' in request.path %}
                             class="nav-item active mr-3"
