@@ -149,6 +149,6 @@ def new_listing_form(request):
       }
    )
 
-def simple_checkout(request, pk):
+def simple_checkout(request):
    
    return render(request,'listings/simple_checkout.html')
