@@ -151,7 +151,7 @@ MESSAGE_TAGS = {
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'concuagio1804@gmail.com'
-EMAIL_HOST_PASSWORD = 'machujpyfjcjzivi'
+EMAIL_HOST_PASSWORD = 'enlngnqacmnwsvrr'
 EMAIL_USE_TLS = True
 
 

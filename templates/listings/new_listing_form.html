@@ -1,0 +1,193 @@
+{% extends 'base.html' %}
+
+{%load humanize %}
+
+{% block title %} | {{ listing.title }} {% endblock %}
+
+{% block content %}
+
+  {% comment %} <section id="new_listing_form" class="bg-light py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+          <div class="card">
+            <div class="card-header bg-primary text-white">
+              <h4>
+                <i class="fas fa-user-plus"></i> Post Listing</h4>
+            </div>
+            <div class="card-body">
+            <!-- Tin nhắn cảnh báo -->
+                {% include 'partials/_alerts.html' %}
+                <form action="{% url 'new_listing_form' %}" method="POST">
+
+                    {% csrf_token %} 
+                <div class="form-group">
+                  <label for="realtor">Realtor</label>
+                  <input type="text" name="realtor" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label for="title">Title</label>
+                  <input type="text" name="title" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label for="address">Address</label>
+                  <input type="text" name="address" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label for="city">City</label>
+                  <input type="text" name="city" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label for="state">State</label>
+                  <input type="text" name="state" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label for="zipcode">Zipcode</label>
+                  <input type="text" name="zipcode" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label for="description">Description</label>
+                  <input type="text" name="description" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label for="price">Price</label>
+                  <input type="text" name="price" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label for="bedrooms">Bedrooms</label>
+                  <input type="text" name="bedrooms" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label for="bathrooms">Bathrooms</label>
+                  <input type="text" name="bathrooms" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label for="garage">Garage</label>
+                  <input type="text" name="garage" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label for="sqft">Sqft</label>
+                  <input type="text" name="sqft" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label for="lot_size">Lot Size</label>
+                  <input type="text" name="lot_size" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label for="photo_main">Photo main</label>
+                  <input type="file" name="photo_main" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label for="photo_1">Photo 1</label>
+                  <input type="file" name="photo_1" class="form-control" >
+                </div>
+                <div class="form-group">
+                  <label for="photo_2">Photo 2</label>
+                  <input type="file" name="photo_2" class="form-control" >
+                </div>
+                <div class="form-group">
+                  <label for="photo_3">Photo 3</label>
+                  <input type="file" name="photo_3" class="form-control" >
+                </div>
+                <div class="form-group">
+                  <label for="photo_4">Photo 4</label>
+                  <input type="file" name="photo_4" class="form-control" >
+                </div>
+                <div class="form-group">
+                  <label for="photo_5">Photo 5</label>
+                  <input type="file" name="photo_5" class="form-control" >
+                </div>
+                <div class="form-group">
+                  <label for="photo_6">Photo 6</label>
+                  <input type="file" name="photo_6" class="form-control" >
+                </div>
+                <div class="form-group">
+                  <label for="is_published">Is Published</label>
+                  <input type="checkbox" name="is_published" class="form-control" >
+                </div>
+                <div class="form-group">
+                  <label for="list_date">List Date</label>
+                  <input type="text" name="list_date" class="form-control" >
+                </div>
+
+                <input type="submit" value="Post Listing" class="btn btn-secondary btn-block">
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>  {% endcomment %}
+
+<section id="new_listing_form" class="bg-light py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+          <div class="card">
+            <div class="card-header bg-primary text-white">
+              <h4>
+                <i class="fas fa-user-alt-slash"></i> Post Listing</h4>
+            </div>
+            <div class="card-body">
+              {% include 'partials/_alerts.html' %}
+              <form action="{% url 'new_listing_form' %}" method="POST" enctype="multipart/form-data">
+
+                  {% csrf_token %} 
+                  {{ form.media }}
+                  {{ form.as_p }}
+
+                  <p>
+                    <input type="submit" value="Post Listing" class="btn btn-secondary btn-block">  
+                        {% comment %} <div id="paypal-button-container"></div>
+                        <script src="https://www.paypal.com/sdk/js?client-id=AXG1TN3yRLVIdLsrUHKOGpQBuM3_x8sC6-bAkROLWtaCqX_BJGNSoBpxGwr0B_QQdqY3cYh7TEO5SRKo&currency=USD"></script>
+                          
+                            <script>
+                            var total = '{{listings.price}}'
+
+                            paypal.Buttons({
+                                
+
+                                style: {
+                                    color:  'blue',
+                                    shape:  'rect',
+                                    label:  'pay',
+                                    height: 40,
+                                    layout: 'horizontal'
+                                },
+                                
+
+                                createOrder: function(data, actions) {
+                                    return actions.order.create({
+                                        purchase_units: [{
+                                            amount: {
+                                                value: '1.23'
+                                            }
+                                        }]
+                                    });
+                                },
+
+
+                                onApprove: function(data, actions) {
+                                    return actions.order.capture().then(function(orderData) {
+
+                                        console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+                                        var transaction = orderData.purchase_units[0].payments.captures[0];
+                                        alert('Transaction '+ transaction.status + ': ' + transaction.id + '\n\nSee console for all available details');
+                                        
+
+                                    });
+                                }
+
+
+                            }).render('#paypal-button-container');
+                        </script> {% endcomment %}
+                  </p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}
