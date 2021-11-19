@@ -6,46 +6,49 @@
 
 {% block content %}
 
-    <h1>Simple checkout {{listing.title}}</h1>
+    <h1>Payment to confirm Listing {{listing.title}}</h1>
 
-    <div id="paypal-button-container"></div>
-     <script src="https://www.paypal.com/sdk/js?client-id=AXG1TN3yRLVIdLsrUHKOGpQBuM3_x8sC6-bAkROLWtaCqX_BJGNSoBpxGwr0B_QQdqY3cYh7TEO5SRKo&currency=USD"></script>
+                        <div id="paypal-button-container"></div>
+                        <script src="https://www.paypal.com/sdk/js?client-id=AXG1TN3yRLVIdLsrUHKOGpQBuM3_x8sC6-bAkROLWtaCqX_BJGNSoBpxGwr0B_QQdqY3cYh7TEO5SRKo&currency=USD"></script>
+                          
+                            <script>
+                            var total = '{{listings.price}}'
 
-        <script>
+                            paypal.Buttons({
+                                
 
-        paypal.Buttons({
-            
+                                style: {
+                                    color:  'blue',
+                                    shape:  'rect',
+                                    label:  'pay',
+                                    height: 40,
+                                    layout: 'horizontal'
+                                },
+                                
 
-            style: {
-                color:  'blue',
-                shape:  'rect',
-                label:  'pay',
-                height: 40
-            },
-
-
-            createOrder: function(data, actions) {
-                return actions.order.create({
-                    purchase_units: [{
-                        amount: {
-                            value: '0.01'
-                        }
-                    }]
-                });
-            },
-
-            onApprove: function(data, actions) {
-                return actions.order.capture().then(function(orderData) {
-
-                    console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
-                    var transaction = orderData.purchase_units[0].payments.captures[0];
-                    alert('Transaction '+ transaction.status + ': ' + transaction.id + '\n\nSee console for all available details');
+                                createOrder: function(data, actions) {
+                                    return actions.order.create({
+                                        purchase_units: [{
+                                            amount: {
+                                                value: '1.23'
+                                            }
+                                        }]
+                                    });
+                                },
 
 
-                });
-            }
+                                onApprove: function(data, actions) {
+                                    return actions.order.capture().then(function(orderData) {
+
+                                        console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+                                        var transaction = orderData.purchase_units[0].payments.captures[0];
+                                        alert('Transaction '+ transaction.status + ': ' + transaction.id + '\n\nSee console for all available details');
+                                        
+                                        document.location.href = "{%url 'listings'%}"
+                                    });
+                                }
 
 
-        }).render('#paypal-button-container');
-    </script>
+                            }).render('#paypal-button-container');
+                        </script> 
 {% endblock %}
