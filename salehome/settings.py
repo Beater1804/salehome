@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     "allauth.socialaccount.providers.github", # new
     "allauth.socialaccount.providers.twitter", # new
     'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.facebook',
 
 ]
 
@@ -95,7 +96,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'salehomedb',
         'USER': 'postgres',
-        'PASSWORD': 'doanhan1971',
+        'PASSWORD': 'huyhuy9',
         'HOST': 'localhost',
         'PORT': '5432',
     }

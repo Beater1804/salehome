@@ -33,17 +33,22 @@
 
               <div class="login-or">{% trans 'or' %}</div>
               
-              <div class="socialaccount_ballot">
-                <!-- GitHub button starts here -->
-                  <a  href="{% provider_login_url "github" %}" id="github-a" class="github-btn btn btn-secondary">
-                    <i class="bi bi-github"></i>
-                    <span>Login with GitHub</span>
+              <div class="row social-contain">
+               
+
+                <div class="col-6 col-md-4">
+                  <a style="background-color: #4285f4; border: none;" href="{% provider_login_url "google" %}" id="google-btn" class="btn social-btn text-white">
+                    <i style  class="bi bi-google"></i>
+                    Google
                   </a>
-                <!-- GitHub button ends here -->
-                  <a  href="{% provider_login_url "google" %}" id="google-btn" class="google-btn btn btn-secondary">
-                    <i class="bi bi-google"></i>
-                    <span>Login with Google</span>
+                </div>
+
+                <div class="col-6 col-md-4">
+                  <a  href="{% provider_login_url "google" %}" id="fb-btn" class="btn social-btn btn-secondary">
+                    <i style  class="bi bi-facebook"></i>
+                    Facebook
                   </a>
+                </div>
               </div>
             </div>
           </div>
