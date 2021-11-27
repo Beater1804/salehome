@@ -26,15 +26,17 @@
         
     </head>
     <body>
-    <!-- Top Bar-->
-    {% include 'partials/_topbar.html' %}
+    
     <!-- Nav Bar-->
     {% include 'partials/_navbar.html' %}
 
     {% block content %} {% endblock %}
 
-    <!-- Footer -->
-    {% include 'partials/_footer.html' %}
+    <!-- Bottom Bar-->
+    {% include 'partials/_topbar.html' %}
+
+    <!-- Sub Footer -->
+    {% include 'partials/_footer1.html' %}
 
 
         <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
