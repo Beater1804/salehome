@@ -60,7 +60,7 @@
                         {%endif %}
                     >
                         <a class="nav-link" href="{% url 'dashboard' %}">
-                         Welcome {{ user.username }} (Dashboard)</a>
+                         Welcome {{ user.username }} </a>
                     </li>
                     <li class="nav-item mr-3">
                         <a href="javascript:{document.getElementById('logout').submit()}" 
@@ -84,7 +84,7 @@
                         <a class="nav-link" href="{% url 'new_listing_form' %}">
                         <i class="fas fa-user-alt-slash"></i> Post Listing</a>
                     </li>
-                    <li 
+                    {% comment %} <li 
                         {%if 'register' in request.path %}
                             class="nav-item active mr-3"
                         {%else %}
@@ -93,7 +93,7 @@
                     >
                         <a class="nav-link" href="{% url 'register' %}">
                         <i class="fas fa-user-plus"></i> Register</a>
-                    </li>
+                    </li> {% endcomment %}
                     <li 
                         {%if 'login' in request.path %}
                             class="nav-item active mr-3"

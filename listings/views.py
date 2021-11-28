@@ -34,16 +34,19 @@ def search(request):
    # Search từ khóa
    if 'keywords' in request.GET:
       keywords = request.GET['keywords']
-      if keywords:
+      if keywords :
          # Kiếm từ khóa trong phần description
          queryset_list = queryset_list.filter(description__icontains=keywords)
-
-   # Search thành phố
-   if 'city' in request.GET:
-      city = request.GET['city']
-      if city:
+      # city = request.GET['city']
+      # if city:
          # Kiếm thành phố trong phần vị trí 
-         queryset_list = queryset_list.filter(city__iexact=city)
+         # queryset_list = queryset_list.filter(city__iexact=keywords)
+   # Search thành phố
+   # if 'city' in request.GET:
+   #    city = request.GET['city']
+   #    if city:
+   #       # Kiếm thành phố trong phần vị trí 
+   #       queryset_list = queryset_list.filter(city__iexact=city)
    
    # Search tiểu bang
    if 'state' in request.GET:

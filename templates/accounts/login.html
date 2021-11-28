@@ -3,12 +3,13 @@
 {% load socialaccount %}
 {% block title %} | Account Login {% endblock %}
 {% block content %}
+
   <section id="login" class="bg-light py-5">
     <div class="container">
       <div class="row">
         <div class="col-md-6 mx-auto">
-          <div class="card">
-            <div class="card-header bg-primary text-white">
+          <div class="card" style="border-radius: 40px;">
+            <div class="card-header bg-primary1 text-white1" style="border-radius: 40px 40px 0 0;">
               <h4>
                 <i class="fas fa-sign-in-alt"></i> Login</h4>
             </div>
@@ -28,27 +29,32 @@
                   <input type="password" name="password" class="form-control" required>
                 </div>
 
-                <input type="submit" value="Login" class="btn btn-secondary btn-block">
+                <input type="submit" value="Login" class="btn btn-secondary btn-block" style="border-radius:60px">
               </form>
 
               <div class="login-or">{% trans 'or' %}</div>
               
-              <div class="row social-contain">
+              <div class="form-row social-contain">
                
 
-                <div class="col-6 col-md-4">
+                <div class="col-md-6">
                   <a style="background-color: #4285f4; border: none;" href="{% provider_login_url "google" %}" id="google-btn" class="btn social-btn text-white">
                     <i style  class="bi bi-google"></i>
                     Google
                   </a>
                 </div>
 
-                <div class="col-6 col-md-4">
+                <div class="col-md-6">
                   <a  href="{% provider_login_url "google" %}" id="fb-btn" class="btn social-btn btn-secondary">
                     <i style  class="bi bi-facebook"></i>
                     Facebook
                   </a>
                 </div>
+              </div>
+              <hr>
+              <div class="form-row form-group">
+                <p class="text-center">Do not have an account?  <a href="{% url 'register'%}"> Register</a></p>
+                
               </div>
             </div>
           </div>

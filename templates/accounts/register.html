@@ -7,8 +7,8 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6 mx-auto">
-          <div class="card">
-            <div class="card-header bg-primary text-white">
+          <div class="card" style="border-radius: 40px;">
+            <div class="card-header bg-primary1 text-white1" style="border-radius: 40px 40px 0 0;">
               <h4>
                 <i class="fas fa-user-plus"></i> Register</h4>
             </div>
@@ -42,7 +42,12 @@
                   <label for="password">Confirm Password</label>
                   <input type="password" name="password2" class="form-control" required>
                 </div>
-                <input type="submit" value="Register" class="btn btn-secondary btn-block">
+                <input type="submit" value="Register" class="btn btn-secondary btn-block" style="border-radius:60px">
+                              <hr>
+              <div class="form-row form-group">
+                <p class="text-center">Do you already have an account?  <a href="{% url 'login'%}"> Log in</a></p>
+                
+              </div>
               </form>
             </div>
           </div>
