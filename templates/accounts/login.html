@@ -32,28 +32,28 @@
                 <input type="submit" value="Login" class="btn btn-secondary btn-block" style="border-radius:60px">
               </form>
 
-              <div class="login-or">{% trans 'or' %}</div>
+              <div class="login-or text-center mb-3"><strong>{% trans '______Or______' %}</strong></div>
               
               <div class="form-row social-contain">
                
 
                 <div class="col-md-6">
-                  <a style="background-color: #4285f4; border: none;" href="{% provider_login_url "google" %}" id="google-btn" class="btn social-btn text-white">
+                  <a href="{% provider_login_url "google" %}" id="google-btn" class="btn social-btn btn-secondary btn-block" style="border-radius:60px">
                     <i style  class="bi bi-google"></i>
                     Google
                   </a>
                 </div>
 
                 <div class="col-md-6">
-                  <a  href="{% provider_login_url "google" %}" id="fb-btn" class="btn social-btn btn-secondary">
+                  <a  href="{% provider_login_url "google" %}" id="fb-btn" class="btn social-btn btn-secondary btn-block" style="border-radius:60px">
                     <i style  class="bi bi-facebook"></i>
                     Facebook
                   </a>
                 </div>
               </div>
               <hr>
-              <div class="form-row form-group">
-                <p class="text-center">Do not have an account?  <a href="{% url 'register'%}"> Register</a></p>
+              <div class="text-center mb-3">
+                <p>Do not have an account?  <strong ><a href="{% url 'register'%}" style="color:#4285f4"> Register</a></strong></p>
                 
               </div>
             </div>

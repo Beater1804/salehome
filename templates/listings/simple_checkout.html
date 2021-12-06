@@ -2,17 +2,45 @@
 
 {%load humanize %}
 
-{% block title %} | {{ listing.title }} {% endblock %}
+{% block title %} | Payment To Confirm {% endblock %}
 
 {% block content %}
+<section id="simple_checkout" class="bg-light py-5">
+    <div class="container">
+      <div class="row">
 
-    <h1>Payment to confirm Listing {{listing.title}}</h1>
+        <div class="col-md-8 offset-md-1 mx-auto">
+          <div class="card" style="border-radius: 40px;">
+            <div class="card-header bg-primary1 text-white1" style="border-radius: 40px 40px 0 0;">
+              <h4>
+                <i class="fas fa-user-alt-slash"></i> Payment to confirm for {{ instance.title }}</h4>
+            </div>
 
-                        <div id="paypal-button-container"></div>
+            <div class="card-body">
+                
+                <h5 class="form-row">The trustee posted the news: {{instance.realtor}}</h5>
+                <div class="form-row">
+                    <h6 class="col-md-6 text-center mb-3">Address: {{instance.address}}</h6>
+                    <h6 class="col-md-6 text-center mb-3">Price: ${{instance.price |intcomma}} </h6>
+                </div>
+                <h5 class="form-row">The picture is displayed when it is posted </h5>
+                <img class="card-img-top" src="{{instance.photo_main.url}}" alt="">
+                    
+
+                        <hr>
+                        <div id="paypal-button-container" ></div>
                         <script src="https://www.paypal.com/sdk/js?client-id=AXG1TN3yRLVIdLsrUHKOGpQBuM3_x8sC6-bAkROLWtaCqX_BJGNSoBpxGwr0B_QQdqY3cYh7TEO5SRKo&currency=USD"></script>
                           
                             <script>
-                            var total = '{{listings.price}}'
+                                {% comment %} var radios = document.forms["formA"].elements["myradio"];
+                                for(var i = 0, max = radios.length; i < max; i++) {
+                                    radios[i].onclick = function() {
+                                        alert(this.value);
+                                    }
+                                } {% endcomment %}
+                            {% comment %} var priceamount = document.getElementById("amount"); {% endcomment %}
+                            var total = '{{instance.price}}'/10000;
+                            {% comment %} var total = priceamount.amount; {% endcomment %}
 
                             paypal.Buttons({
                                 
@@ -30,7 +58,7 @@
                                     return actions.order.create({
                                         purchase_units: [{
                                             amount: {
-                                                value: '1.23'
+                                                value: total
                                             }
                                         }]
                                     });
@@ -51,4 +79,13 @@
 
                             }).render('#paypal-button-container');
                         </script> 
+
+
+                        
+                    </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
 {% endblock %}

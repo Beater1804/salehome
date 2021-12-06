@@ -3,7 +3,7 @@ from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from listings.choices import price_choices, bedroom_choices, state_choices
 
 from django.contrib import messages
-
+from operator import or_
 from .forms import NewListingForm
 from .models import Listing
 
@@ -29,14 +29,22 @@ def listing(request, listing_id):
    return render(request,'listings/listing.html',context)
 
 def search(request):
-   queryset_list = Listing.objects.order_by('-list_date')
+   queryset_list = Listing.objects.order_by('-list_date').filter(is_published=True)
 
    # Search từ khóa
+   
    if 'keywords' in request.GET:
       keywords = request.GET['keywords']
+
       if keywords :
          # Kiếm từ khóa trong phần description
-         queryset_list = queryset_list.filter(description__icontains=keywords)
+         queryset_list = queryset_list.filter(description__icontains=keywords) | queryset_list.filter(city__iexact=keywords) | queryset_list.filter(zipcode__iexact=keywords) | queryset_list.filter(title__icontains=keywords) | queryset_list.filter(realtor__name__icontains=keywords)
+
+         
+
+
+
+
       # city = request.GET['city']
       # if city:
          # Kiếm thành phố trong phần vị trí 
@@ -136,7 +144,7 @@ def new_listing_form(request):
          instance.save()
 
          messages.success(request,'You have successfully')
-         return redirect('simple_checkout')
+         return render(request,'listings/simple_checkout.html',{'instance': instance,})
       else:
          messages.error(request, 'You not post')
          return redirect('new_listing_form')
